@@ -1,0 +1,212 @@
+@use 'sass:map';
+@use 'sass:list';
+
+// Set colours
+$colours: (
+    't': transparent,
+    'r': #de2900,
+    'b': black,
+    'o': #ffbdb5
+);
+
+// Set pixel size
+$size: 5px;
+
+// Generate box shadow
+@function pixelize($matrix, $size) {
+    $sh: '';
+    $rows: list.length($matrix);
+
+    @for $row from 1 through $rows {
+        $row-num: list.nth($matrix, $row);
+
+        @for $col from 1 through list.length($row-num) {
+            $dot: list.nth($row-num, $col);
+            $sh: $sh + ($size * $col) + ' ' + ($size * $row) + ' ' + map.get($colours, $dot);
+
+            @if not ($col == list.length($row-num) and $row == $rows) {
+                $sh: $sh + ',';
+            }
+        }
+    }
+    @return unquote($sh);
+}
+
+// Make "frames"
+$pixel-art: (
+    mario-1: (
+            (t t t t t t t t b b b b t t t t)
+            (t t t t t t b b r r r r b t t t)
+            (t t t t t b r r r r r r b t t t)
+            (t t t t b r r r r b b b b b b t)
+            (t t t b r r r b b b b b b b b b)
+            (t t t b r r b b o o o o b b b t)
+            (t t b b b b b o o o b o b t t t)
+            (t t b o o b b o o o b o b b b t)
+            (t t b o o b b b o o o o o o o b)
+            (t t b o o o b o o b o o o o o b)
+            (t t t b o o o o b b b o o o b t)
+            (t t t t b b o o o o b b b b t t)
+            (t t t b b b b o o o o o b t t t)
+            (t t t b r r b b b b b b t t t t)
+            (t t b r r r r b b o o o b t t t)
+            (t t b r r r r b o o o o o b t t)
+            (t t b r r r r b o o o o o b t t)
+            (t t b b r r r r b o o o b b b t)
+            (t t b b b r r r b b b b b o b t)
+            (t t t b b b b b b o o b b o b t)
+            (t t t b b b b b b b b b b b b t)
+            (t t t b b b b b b b b b b b t t)
+            (t t t b b b b b b b b b b b t t)
+            (t t t t b b b b b b b b b t t t)
+            (t t t t b r r r r r b t t t t t)
+            (t t t t b r r r r r r b t t t t)
+            (t t t t b b b b b b b b t t t t)
+    ),
+    mario-2: (
+            (t t t t t t t b b b b t t t t t)
+            (t t t t t b b r r r r b t t t t)
+            (t t t t b r r r r r r b t t t t)
+            (t t t b r r r r b b b b b b t t)
+            (t t b r r r b b b b b b b b b t)
+            (t t b r r b b o o o o o b b t t)
+            (t b b b b b o o o b o b b t t t)
+            (t b o o b b o o o b o b b b t t)
+            (t b o o b b b o o o o o o o b t)
+            (t b o o o b o o b o o o o o b t)
+            (t t b o o o o b b b b o o b b b)
+            (t t t b b o o o o b b b b b t t)
+            (t t b b b b o o o o o b t t t t)
+            (t b r r r b b b b b b t t t t t)
+            (t b r r r b b b r r b b t b t t)
+            (b r r r b o o o b r r b b o b t)
+            (b r r b o o o o o b r r b o b t)
+            (b r r b o o o o o b r r b o b t)
+            (b b r r b o o o b o b b o b t t)
+            (t b b b b b b b o o b b o b t t)
+            (t b b b b b b b b b b b b b t t)
+            (t t b b b b b b b b b b b b b t)
+            (t b r b b b b b b b b b b r r b)
+            (t b r b b b b b t b b b r r r b)
+            (t b r r b b b t t t b r r r b t)
+            (t t b r r r r b t t b r r b t t)
+            (t t t b b b b b t t t b b t t t)
+    ),
+    mario-3: (
+            (t t t t t t t b b b b t t t t t)
+            (t t t t t b b r r r b b t t t t)
+            (t t t t b r r r r r r b t t t t)
+            (t t t b r r r b b b b b b t t t)
+            (t t b r r r b b b b b b b b t t)
+            (t t b r b b o o o o o o b b t t)
+            (t b b b b o o o b o b o b t t t)
+            (t b o b b o o o b o b o b t t t)
+            (b o o b b b o o o o o o o b t t)
+            (b o o o b o o b o o o o o b t t)
+            (t b o o o o b b b b o o b b b t)
+            (t t b b o o o o b b b b b t t t)
+            (t t t b b b o o o o o b t t t t)
+            (t t b r r r b b b b b b t b b t)
+            (t b r r r r r b b r r b b o o b)
+            (b r r r b b b r b r r r b b o b)
+            (b r r b o o o b b b r r r b o b)
+            (b r b o o o o o b b b r r b b t)
+            (t b b o o o o o b o o b b o b t)
+            (t t b b o o o b b o o b b r r b)
+            (t b r r b b b b b b b b r r r b)
+            (b b r b b b b b b b b b r r r b)
+            (b r r b b b b b b b b b r r r b)
+            (b r r b b b b b t t t b r r b b)
+            (b r r b b t t t t t t t b b b t)
+            (t b b t t t t t t t t t t t t t)
+            (t t t t t t t t t t t t t t t t)
+    ),
+    mario-4: (
+            (t t t t t t t b b b b t t t t t)
+            (t t t t t b b r r r r b t t t t)
+            (t t t t b r r r r r r b t t t t)
+            (t t t b r r r r b b b b b b t t)
+            (t t b r r r b b b b b b b b b t)
+            (t t b r r b b o o o o o b b t t)
+            (t b b b b b o o o b o b b t t t)
+            (t b o o b b o o o b o b b b t t)
+            (t b o o b b b o o o o o o o b t)
+            (t b o o o b o o b o o o o o b t)
+            (t t b o o o o b b b b o o b b b)
+            (t t t b b o o o o b b b b b t t)
+            (t t b b b b o o o o o b t t t t)
+            (t b r r r b b b b b b t t t t t)
+            (t b r r r b b b r r b b t b t t)
+            (b r r r b o o o b r r b b o b t)
+            (b r r b o o o o o b r r b o b t)
+            (b r r b o o o o o b r r b b t t)
+            (b b r r b o o o b o b b o b t t)
+            (t b b b b b b b o o b b o b t t)
+            (t b b b b b b b b b b b b b t t)
+            (t t b b b b b b b b b b b b b t)
+            (t b r b b b b b b b b b b r r b)
+            (t b r b b b b b t b b b r r r b)
+            (t b r r b b b t t t b r r r b t)
+            (t t b r r r r b t t b r r b t t)
+            (t t t b b b b b t t t b b t t t)
+    )
+);
+
+// Setup keyframes for walking right
+@keyframes mario-walk-right {
+    0% { box-shadow: pixelize(map.get($pixel-art, mario-1), $size); }
+    25% { box-shadow: pixelize(map.get($pixel-art, mario-2), $size); }
+    50% { box-shadow: pixelize(map.get($pixel-art, mario-3), $size); }
+    75% { box-shadow: pixelize(map.get($pixel-art, mario-4), $size); }
+    100% { box-shadow: pixelize(map.get($pixel-art, mario-1), $size); }
+}
+
+// Setup keyframes for walking left (reversing the animation)
+@keyframes mario-walk-left {
+    0% { box-shadow: pixelize(map.get($pixel-art, mario-1), $size); }
+    25% { box-shadow: pixelize(map.get($pixel-art, mario-4), $size); }
+    50% { box-shadow: pixelize(map.get($pixel-art, mario-3), $size); }
+    75% { box-shadow: pixelize(map.get($pixel-art, mario-2), $size); }
+    100% { box-shadow: pixelize(map.get($pixel-art, mario-1), $size); }
+}
+
+// Styles for mario
+.mario-container {
+    position: absolute;
+    top: -#{28 * $size}; /* Высота Марио: 28 * 5px = 140px */
+    left: 0;
+    width: #{16 * $size}; /* Ширина Марио: 16 * 5px = 80px */
+    height: #{28 * $size}; /* 140px */
+    overflow: hidden;
+}
+
+.mario {
+    width: $size; /* 5px */
+    height: $size; /* 5px */
+    animation: mario-walk-right 0.4s steps(4) infinite;
+    transform-origin: top left;
+}
+
+.mario.right {
+    animation: mario-walk-right 0.4s steps(4) infinite;
+}
+
+.mario.left {
+    animation: mario-walk-left 0.4s steps(4) infinite;
+    transform: scaleX(-1); /* Зеркальное отражение для движения влево */
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 640px) {
+    $size-mobile: 4px; /* Уменьшенный размер пикселя */
+    .mario-container {
+        top: -#{28 * $size-mobile}; /* 28 * 4px = 112px */
+        width: #{16 * $size-mobile}; /* 16 * 4px = 64px */
+        height: #{28 * $size-mobile}; /* 112px */
+        transform: scale(0.8); /* Дополнительное масштабирование */
+    }
+    .mario {
+        width: $size-mobile;
+        height: $size-mobile;
+    }
+}

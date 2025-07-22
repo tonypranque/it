@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('/public/fonts/Press_Start_2P/PressStart2P-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dot Gothic 16';
+    src: url('/public/fonts/DotGothic16/DotGothic16-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
