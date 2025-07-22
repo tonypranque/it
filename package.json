@@ -16,6 +16,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
+        "alpinejs": "^3.14.9",
         "sass": "^1.89.2",
         "typewriter-effect": "^2.22.0"
     }

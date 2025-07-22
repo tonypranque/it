@@ -8,72 +8,99 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* Base styles */
+body {
+    padding-top: 2rem;
+}
 
-
+/* Font classes */
 .custom-font {
     font-family: 'Press Start 2P', sans-serif;
 }
+
 .pixel-font {
     font-family: 'Dot Gothic 16', sans-serif;
 }
 
-.pixel-corners,
-.pixel-corners--wrapper {
-    clip-path: polygon(0px calc(100% - 4px),
-    4px calc(100% - 4px),
-    4px 100%,
-    calc(100% - 4px) 100%,
-    calc(100% - 4px) calc(100% - 4px),
-    100% calc(100% - 4px),
-    100% 4px,
-    calc(100% - 4px) 4px,
-    calc(100% - 4px) 0px,
-    4px 0px,
-    4px 4px,
-    0px 4px);
-    position: relative;
-}
+/* Pixel corners styles */
 .pixel-corners {
     border: 4px solid transparent;
+    position: relative;
+    clip-path: polygon(
+        0px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 4px,
+        0px 4px
+    );
 }
+
 .pixel-corners--wrapper {
     width: fit-content;
     height: fit-content;
+    position: relative;
+    clip-path: polygon(
+        0px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 4px,
+        0px 4px
+    );
 }
+
 .pixel-corners--wrapper .pixel-corners {
     display: block;
-    clip-path: polygon(4px 4px,
-    calc(100% - 4px) 4px,
-    calc(100% - 4px) calc(100% - 4px),
-    4px calc(100% - 4px));
+    clip-path: polygon(
+        4px 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) calc(100% - 4px),
+        4px calc(100% - 4px)
+    );
 }
+
 .pixel-corners::after,
 .pixel-corners--wrapper::after {
     content: "";
     position: absolute;
-    clip-path: polygon(0px calc(100% - 4px),
-    4px calc(100% - 4px),
-    4px 100%,
-    calc(100% - 4px) 100%,
-    calc(100% - 4px) calc(100% - 4px),
-    100% calc(100% - 4px),
-    100% 4px,
-    calc(100% - 4px) 4px,
-    calc(100% - 4px) 0px,
-    4px 0px,
-    4px 4px,
-    0px 4px,
-    0px 50%,
-    4px 50%,
-    4px 4px,
-    calc(100% - 4px) 4px,
-    calc(100% - 4px) calc(100% - 4px),
-    4px calc(100% - 4px),
-    4px 50%,
-    0px 50%);
+    clip-path: polygon(
+        0px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 4px,
+        0px 4px,
+        0px 50%,
+        4px 50%,
+        4px 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 50%,
+        0px 50%
+    );
     top: 0;
     bottom: 0;
     left: 0;
@@ -82,15 +109,143 @@
     display: block;
     pointer-events: none;
 }
+
 .pixel-corners::after {
     margin: -4px;
 }
+
 .pixel-corners.box {
     background: white;
 }
 
 .pixel-corners.box:hover::after {
-    background: #33adff; /* Более светлый оттенок синего */
+    background: #33adff;
+}
+
+/* Navigation specific overrides */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: visible !important;
+}
+
+.nav-container {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Dropdown menu styles */
+.dropdown-group {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 4px);
+    min-width: 200px;
+    background: #2563eb;
+    opacity: 0;
+    visibility: hidden;
+    transform: none !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+    z-index: 1001;
+    clip-path: none !important;
+    border: none !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-group:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 12px;
+}
+
+/* Navigation pixel-corners override */
+nav.pixel-corners {
+    clip-path: none;
+}
+
+nav.pixel-corners::after {
+    display: none;
+}
+
+nav.pixel-corners > div {
+    clip-path: none !important;
 }
 
 
+
+/* Пиксельный стиль для навигации */
+nav.pixel-nav {
+    border: 4px solid #33adff;
+    box-shadow: 8px 8px 0 #338bff;
+    position: relative;
+    background: #2563eb;
+    /* Убираем clip-path для навигации */
+    clip-path: none !important;
+}
+
+/* Псевдоэлемент для пиксельного эффекта */
+nav.pixel-nav::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 2px solid #33adff;
+    pointer-events: none;
+}
+
+/* Контейнер навигации - должен быть без обрезания */
+.nav-container {
+    position: relative;
+    overflow: visible !important;
+    /* Убираем наследование clip-path */
+    clip-path: none !important;
+}
+
+/* Элементы меню */
+.nav-link {
+    position: relative;
+    z-index: 1;
+}
+
+/* Выпадающее меню - пиксельный стиль */
+.dropdown-menu {
+    border: 2px solid #33adff;
+    box-shadow: 4px 4px 0 #33adff;
+    margin-top: 8px; /* Отступ от пункта меню */
+}
+
+/* Пункты выпадающего меню */
+.dropdown-menu li a {
+    border-bottom: 1px solid #33adff;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Анимация выпадающего меню */
+.dropdown-menu {
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-group:hover .dropdown-menu {
+    transform: translateY(0);
+}

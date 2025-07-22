@@ -8,12 +8,26 @@ use Illuminate\View\View;
 
 class PageController extends Controller
 {
-    public function show(string $slug): View
+    public function show(string $parentSlug, string $childSlug = null): View
     {
-        $page = Page::where('slug', $slug)
-            ->where('is_published', true)
-            ->firstOrFail();
+        if ($childSlug) {
+            // Поиск дочерней страницы
+            $page = Page::where('slug', $childSlug)
+                ->where('is_published', true)
+                ->whereHas('parent', function ($query) use ($parentSlug) {
+                    $query->where('slug', $parentSlug)->where('is_published', true);
+                })
+                ->firstOrFail();
+        } else {
+            // Поиск родительской страницы
+            $page = Page::where('slug', $parentSlug)
+                ->where('is_published', true)
+                ->firstOrFail();
+        }
 
-        return view('pages.show', compact('page'));
+        // Загружаем дочерние страницы для текущей страницы
+        $childPages = $page->children()->where('is_published', true)->get();
+
+        return view('pages.show', compact('page', 'childPages'));
     }
 }

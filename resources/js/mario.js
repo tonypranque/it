@@ -5,29 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let position = 0;
     let speed = window.innerWidth < 640 ? 1 : 2; // Меньшая скорость на мобильных
-    let direction = 'right';
+    const direction = 'right'; // Фиксируем направление
 
     function moveMario() {
         const footerWidth = footer.offsetWidth;
         const marioWidth = marioContainer.offsetWidth;
         const maxPosition = footerWidth - marioWidth;
 
-        // Обновляем позицию
-        if (direction === 'right') {
-            position += speed;
-            mario.classList.remove('left');
-            mario.classList.add('right');
-        } else {
-            position -= speed;
-            mario.classList.remove('right');
-            mario.classList.add('left');
-        }
+        // Обновляем позицию (только вправо)
+        position += speed;
+        mario.classList.remove('left');
+        mario.classList.add('right');
 
-        // Проверка границ
+        // Если достиг правой границы - возвращаем в начало
         if (position >= maxPosition) {
-            direction = 'left';
-        } else if (position <= 0) {
-            direction = 'right';
+            position = 0;
         }
 
         // Применяем позицию

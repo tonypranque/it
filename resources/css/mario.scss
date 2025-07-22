@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:list';
+@use "sass:string";
 
 // Set colours
 $colours: (
@@ -10,7 +11,8 @@ $colours: (
 );
 
 // Set pixel size
-$size: 5px;
+$size: 3px;
+
 
 // Generate box shadow
 @function pixelize($matrix, $size) {
@@ -29,7 +31,7 @@ $size: 5px;
             }
         }
     }
-    @return unquote($sh);
+    @return string.unquote($sh);
 }
 
 // Make "frames"
@@ -186,6 +188,7 @@ $pixel-art: (
     animation: mario-walk-right 0.4s steps(4) infinite;
     transform-origin: top left;
 }
+
 
 .mario.right {
     animation: mario-walk-right 0.4s steps(4) infinite;

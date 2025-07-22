@@ -6,7 +6,7 @@ export function initTypewriter(appName) {
 
     // Создаем отдельный элемент для неизменяемого текста
     const staticText = document.createElement('span');
-    staticText.textContent = 'Хакермены ';
+    staticText.textContent = 'КарьялаТех ';
     staticText.style.display = 'inline'; // Чтобы текст был в одной строке
 
     // Очищаем header и добавляем staticText
