@@ -1,0 +1,152 @@
+
+/* Твой полный CSS ниже */
+:root {
+    --font-size: 16px;
+    --background: #f8f9fa;
+    --foreground: #212529;
+    --card: #ffffff;
+    --card-foreground: #212529;
+    --popover: #ffffff;
+    --popover-foreground: #212529;
+    --primary: #0d47a1;
+    --primary-foreground: #ffffff;
+    --secondary: #37474f;
+    --secondary-foreground: #ffffff;
+    --muted: #f5f5f5;
+    --muted-foreground: #6c757d;
+    --accent: #ffc107;
+    --accent-foreground: #212529;
+    --destructive: #dc3545;
+    --destructive-foreground: #ffffff;
+    --border: #dee2e6;
+    --input: #ffffff;
+    --input-background: #ffffff;
+    --switch-background: #e9ecef;
+    --font-weight-medium: 500;
+    --font-weight-normal: 400;
+    --ring: #0d47a1;
+    --chart-1: #0d47a1;
+    --chart-2: #ffc107;
+    --chart-3: #17a2b8;
+    --chart-4: #dc3545;
+    --chart-5: #6f42c1;
+    --radius: 8px;
+    --nc-blue: #0d47a1;
+    --nc-yellow: #ffc107;
+    --nc-cyan: #17a2b8;
+    --nc-gray: #f8f9fa;
+    --nc-dark-gray: #6c757d;
+    --nc-black: #212529;
+    --nc-white: #ffffff;
+    --nc-light-blue: #e3f2fd;
+    --nc-success: #28a745;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-input-background: var(--input-background);
+    --color-switch-background: var(--switch-background);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: var(--radius);
+    --radius-lg: calc(var(--radius) + 4px);
+    --radius-xl: calc(var(--radius) + 8px);
+    --color-nc-blue: var(--nc-blue);
+    --color-nc-yellow: var(--nc-yellow);
+    --color-nc-cyan: var(--nc-cyan);
+    --color-nc-gray: var(--nc-gray);
+    --color-nc-dark-gray: var(--nc-dark-gray);
+    --color-nc-black: var(--nc-black);
+    --color-nc-white: var(--nc-white);
+    --color-nc-light-blue: var(--nc-light-blue);
+    --color-nc-success: var(--nc-success);
+}
+
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+    }
+
+    .mono-font {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .retro-panel {
+        @apply relative bg-gradient-to-br from-nc-light-blue to-nc-white border border-nc-blue rounded-lg;
+    }
+
+    .retro-panel::before {
+        content: '';
+        @apply absolute inset-[-1px] bg-gradient-to-r from-nc-blue to-nc-cyan rounded-lg opacity-10 pointer-events-none;
+    }
+
+    .retro-button {
+        background: linear-gradient(135deg, var(--nc-white) 0%, var(--nc-gray) 100%);
+        border: 2px solid var(--nc-blue);
+        color: var(--nc-blue);
+        transition: all 0.2s ease;
+    }
+
+    .retro-button:hover {
+        background: linear-gradient(135deg, var(--nc-blue) 0%, var(--nc-cyan) 100%);
+        color: var(--nc-white);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(13, 71, 161, 0.2);
+    }
+
+    .code-highlight {
+        background: var(--nc-light-blue);
+        color: var(--nc-blue);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9em;
+    }
+}
+
+@layer base {
+    :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+        h1 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; color: var(--nc-black); }
+        h2 { font-size: 2rem; font-weight: 600; line-height: 1.3; color: var(--nc-black); }
+        h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.4; color: var(--nc-black); }
+        h4 { font-size: 1.25rem; font-weight: 500; line-height: 1.4; color: var(--nc-black); }
+        p { font-size: 1rem; font-weight: 400; line-height: 1.6; color: var(--nc-dark-gray); }
+        label { font-size: 0.875rem; font-weight: 500; line-height: 1.4; color: var(--nc-black); }
+        button { font-size: 0.875rem; font-weight: 500; line-height: 1.4; }
+        input { font-size: 1rem; font-weight: 400; line-height: 1.4; }
+    }
+}
+
+html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+}
