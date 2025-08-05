@@ -24,9 +24,9 @@
 
             <nav class="hidden md:flex space-x-8">
                 <a href="/services" class="text-foreground hover:text-primary">Услуги</a>
-                <a href="#about" class="text-foreground hover:text-primary">О нас</a>
-                <a href="#portfolio" class="text-foreground hover:text-primary">Клиенты</a>
-                <a href="#contact" class="text-foreground hover:text-primary">Контакты</a>
+                <a href="/#about" class="text-foreground hover:text-primary">О нас</a>
+                <a href="/#portfolio" class="text-foreground hover:text-primary">Клиенты</a>
+                <a href="/#contact" class="text-foreground hover:text-primary">Контакты</a>
             </nav>
 
             <div class="flex items-center space-x-4">

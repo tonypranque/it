@@ -1,3 +1,7 @@
+<!--breadcrumbs.blade.php-->
+{{-- Breadcrumbs Component --}}
+{{-- Usage: --}}
+{{-- @component('components.breadcrumbs', ['items' => $breadcrumbItems]) --}}
 @props(['items' => []])
 
 @if($items && count($items) > 0)

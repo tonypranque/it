@@ -1,18 +1,42 @@
-<!--services/sho-->
+<!--services/show-->
 @extends('layouts.app')
+
+@section('title', $service->title . ' - ' . config('app.name'))
+@section('description', $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160))
+
+@section('meta')
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $service->title }} - {{ config('app.name') }}">
+    <meta property="og:description" content="{{ $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160) }}">
+    <meta property="og:image" content="{{ asset('images/og-service.jpg') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $service->title }} - {{ config('app.name') }}">
+    <meta property="twitter:description" content="{{ $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160) }}">
+    <meta property="twitter:image" content="{{ asset('images/og-service.jpg') }}">
+@endsection
 
 @section('content')
     <x-services-hero :service="$service">
-        <x-breadcrumbs :items="[
-        ['title' => 'Главная', 'url' => '/', 'active' => false],
-        ['title' => 'Услуги', 'url' => route('services.index'), 'active' => false],
-        ['title' => $service->parent?->title, 'url' => $service->parent?->url, 'active' => false],
-        ['title' => $service->title, 'active' => true]
-    ]" />
     </x-services-hero>
 
+
     <section class="py-20 bg-white">
+
         <div class="container mx-auto px-4 max-w-6xl">
+            <x-breadcrumbs :items="[
+            ['title' => 'Главная', 'url' => route('home'), 'active' => false],
+            ['title' => 'Услуги', 'url' => route('services.index'), 'active' => false],
+            ['title' => $service->parent?->title, 'url' => $service->parent ? route('services.show.parent', $service->parent->slug) : null, 'active' => false],
+            ['title' => $service->title, 'active' => true]
+        ]" />
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Описание -->
                 <div
@@ -22,9 +46,9 @@
                     class="space-y-6 transition-all duration-700 ease-out"
                 >
                     <h2 class="text-2xl font-semibold">Что входит</h2>
-                    <p class="text-muted-foreground leading-relaxed">
-                        {{ $service->content }}
-                    </p>
+                    <div class="text-muted-foreground leading-relaxed prose max-w-none">
+                        {!! $service->content ?? '<p>Описание услуги будет добавлено в ближайшее время.</p>' !!}
+                    </div>
 
                     <ul class="space-y-3">
                         @foreach([
@@ -76,7 +100,7 @@
                     <div class="retro-panel p-6 text-center">
                         <h3 class="font-semibold mb-2">Готов начать проект?</h3>
                         <p class="text-sm text-muted-foreground mb-4">Получи бесплатную консультацию</p>
-                        <a href="#contact" class="retro-button inline-flex px-6 py-2 text-sm">
+                        <a href="{{ route('page.show', 'contacts') }}" class="retro-button inline-flex px-6 py-2 text-sm">
                             Заказать разработку
                         </a>
                     </div>

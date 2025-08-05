@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Controllers/ServiceController.php
 namespace App\Http\Controllers;
 
 use App\Models\Service;
@@ -23,7 +22,7 @@ class ServiceController extends Controller
     public function show(string $parentSlug = null, string $childSlug = null): View
     {
         $service = null;
-        $childPages = collect(); // Для совместимости с шаблоном
+        $childPages = collect();
 
         if ($childSlug) {
             // Подуслуга
@@ -34,7 +33,6 @@ class ServiceController extends Controller
                 })
                 ->firstOrFail();
 
-            // Подуслуги текущей услуги
             $childPages = $service->publishedChildren;
         } else {
             // Корневая услуга
@@ -43,10 +41,15 @@ class ServiceController extends Controller
                 ->where('is_published', true)
                 ->firstOrFail();
 
-            // Подуслуги корневой услуги
             $childPages = $service->publishedChildren;
         }
 
-        return view('services.show', compact('service', 'childPages'));
+        // Получаем все корневые услуги для отображения в секции
+        $allServices = Service::whereNull('parent_id')
+            ->where('is_published', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('services.show', compact('service', 'childPages', 'allServices'));
     }
 }

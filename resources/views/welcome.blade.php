@@ -7,7 +7,7 @@
     ['title' => 'Разработка мобильных приложений', 'active' => true]
 ]" />--}}
     <x-hero />
-    <x-services />
+<x-services-showcase />
     <x-about />
     <x-team />
     <x-portfolio />
