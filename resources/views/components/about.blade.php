@@ -93,9 +93,7 @@
                         </div>
                         <!-- Клиенты -->
                         <div class="text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7v-2a3 3 0 005.356-1.857M17 20v2m-10 0v-2m-3-3h16" />
-                            </svg>
+                            <svg class="w-8 h-8 text-accent mx-auto mb-2" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>smile</title> <desc>Created with sketchtool.</desc> <g id="people" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="smile" fill="#e6bb18"> <path d="M12,22 C6.4771525,22 2,17.5228475 2,12 C2,6.4771525 6.4771525,2 12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 Z M16,13 C16,15.209139 14.209139,17 12,17 C9.790861,17 8,15.209139 8,13 L16,13 Z M12,20 C16.418278,20 20,16.418278 20,12 C20,7.581722 16.418278,4 12,4 C7.581722,4 4,7.581722 4,12 C4,16.418278 7.581722,20 12,20 Z M9.5,11 C10.3284271,11 11,10.3284271 11,9.5 C11,8.67157288 10.3284271,8 9.5,8 C8.67157288,8 8,8.67157288 8,9.5 C8,10.3284271 8.67157288,11 9.5,11 Z M14.5,11 C15.3284271,11 16,10.3284271 16,9.5 C16,8.67157288 15.3284271,8 14.5,8 C13.6715729,8 13,8.67157288 13,9.5 C13,10.3284271 13.6715729,11 14.5,11 Z" id="Shape"> </path> </g> </g> </g></svg>
                             <div class="text-2xl font-bold text-foreground mono-font">300+</div>
                             <div class="text-sm text-muted-foreground">Довольных клиентов</div>
                         </div>

@@ -31,12 +31,6 @@
     <section class="py-20 bg-white">
 
         <div class="container mx-auto px-4 max-w-6xl">
-            <x-breadcrumbs :items="[
-            ['title' => 'Главная', 'url' => route('home'), 'active' => false],
-            ['title' => 'Услуги', 'url' => route('services.index'), 'active' => false],
-            ['title' => $service->parent?->title, 'url' => $service->parent ? route('services.show.parent', $service->parent->slug) : null, 'active' => false],
-            ['title' => $service->title, 'active' => true]
-        ]" />
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Описание -->
                 <div
@@ -107,5 +101,69 @@
                 </div>
             </div>
         </div>
+        {{-- Проверяем, есть ли дочерние услуги для отображения --}}
+        @if($childPages->isNotEmpty())
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-4 max-w-6xl">
+                    <div
+                        x-data="{ inView: false }"
+                        x-intersect.once="inView = true"
+                        :class="{ 'opacity-0 translate-y-8': !inView, 'opacity-100 translate-y-0': inView }"
+                        class="text-center mb-16 transition-all duration-1000 ease-out"
+                    >
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                            Специализированные <span class="text-primary">услуги</span>
+                        </h2>
+                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                            Подробнее о специализированных направлениях в рамках данной услуги.
+                        </p>
+                    </div>
+
+                    <!-- Сетка дочерних услуг -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @foreach($childPages as $index => $childService)
+                            <div class="flex">
+                                <a href="{{ route('services.show.child', [$service->slug, $childService->slug]) }}" class="block group flex-1">
+                                    <div
+                                        x-data="{ inView: false }"
+                                        x-intersect.once="inView = true"
+                                        :class="{ 'opacity-0 translate-y-10': !inView, 'opacity-100 translate-y-0': inView }"
+                                        class="retro-panel p-6 h-full transition-all duration-700 ease-out hover:bg-primary/5 hover:shadow-md flex flex-col"
+                                        style="transition-delay: {{ $index * 100 }}ms"
+                                    >
+                                        <!-- Иконка -->
+                                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                            @if($childService->icon)
+                                                @svg($childService->icon, 'w-6 h-6 text-primary')
+                                            @else
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                                </svg>
+                                            @endif
+                                        </div>
+
+                                        <!-- Заголовок -->
+                                        <h3 class="text-xl font-semibold text-foreground mb-2">{{ $childService->title }}</h3>
+
+                                        <!-- Краткое описание -->
+                                        <p class="text-muted-foreground text-sm leading-relaxed flex-1">
+                                            {{ $childService->excerpt ?? 'Описание услуги будет добавлено в ближайшее время.' }}
+                                        </p>
+
+                                        <!-- Стрелка при наведении -->
+                                        <div class="flex items-center mt-4 text-primary text-sm font-medium">
+                                            Подробнее
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
     </section>
 @endsection

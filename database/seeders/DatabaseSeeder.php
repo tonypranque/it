@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
            PageSeeder::class,
             ServiceSeeder::class,
             UserSeeder::class,
+            TeamMembersTableSeeder::class,
         ]);
     }
 }

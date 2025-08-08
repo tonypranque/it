@@ -19,5 +19,3 @@ Route::get('/services/{parentSlug}/{childSlug}', [ServiceController::class, 'sho
 
 Route::get('/{parentSlug}/{childSlug?}', [PageController::class, 'show'])->name('page.show');
 
-
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

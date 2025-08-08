@@ -8,7 +8,18 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+[x-cloak] { display: none !important; }
 
+/* CSS-переменная для высоты хедера */
+:root {
+    --header-height: 4rem; /* Примерная высота основного хедера (64px). Адаптируйте под свои стили. */
+}
+
+/* Класс для создания отступа под фиксированный хедер */
+.fixed-header-spacer {
+    /* padding-top равен высоте фиксированного хедера */
+    padding-top: var(--header-height);
+}
 
 /* Если не отключена анимация в настройках ОС, будет анимация скролла */
 @media (prefers-reduced-motion: no-preference) {

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{{-- resources/views/layouts/app.blade.php --}}
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
@@ -34,25 +35,26 @@
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.14.1/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-
-    <!-- Custom Styles -->
-    <style>
-        [x-cloak] { display: none !important; }
-    </style>
 </head>
 <body>
 <div class="min-h-screen bg-background">
     <x-header />
 
-    <main>
-        @yield('content')
-    </main>
+    {{-- Контейнер, который компенсирует высоту фиксированного хедера --}}
+    {{-- Все, что внутри этого div, будет ниже хедера --}}
+    <div class="fixed-header-spacer">
+        {{-- Вставка хлебных крошек --}}
+        @if(isset($breadcrumbItems) && !empty($breadcrumbItems))
+            <x-breadcrumbs :items="$breadcrumbItems" />
+        @endif
 
-    <x-footer />
+        <main>
+            @yield('content')
+            @livewire('contact-form')
+        </main>
+
+        <x-footer />
+    </div>
 </div>
 </body>
 </html>

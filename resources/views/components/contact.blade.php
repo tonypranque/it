@@ -1,3 +1,4 @@
+<!--components/contact.blade.php-->
 <section id="contact" class="py-20 bg-white">
     <div class="container mx-auto px-4">
 

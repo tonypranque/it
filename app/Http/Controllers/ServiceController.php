@@ -15,7 +15,13 @@ class ServiceController extends Controller
             ->orderBy('order')
             ->get();
 
-        return view('services.index', compact('services'));
+        // Формируем хлебные крошки для страницы списка услуг
+        $breadcrumbItems = [
+           /* ['title' => 'Главная', 'url' => route('home')], // Предполагается, что у вас есть именованный маршрут 'home'*/
+            ['title' => 'Услуги', 'active' => true], // Текущая страница
+        ];
+
+        return view('services.index', compact('services', 'breadcrumbItems'));
     }
 
     // Показать конкретную услугу (с подуслугами)
@@ -50,6 +56,27 @@ class ServiceController extends Controller
             ->orderBy('order')
             ->get();
 
-        return view('services.show', compact('service', 'childPages', 'allServices'));
+        // Формируем хлебные крошки для страницы конкретной услуги
+        $breadcrumbItems = [
+            /*['title' => 'Главная', 'url' => route('home')], // Предполагается, что у вас есть именованный маршрут 'home'*/
+            ['title' => 'Услуги', 'url' => route('services.index')],
+        ];
+
+        // Если это подуслуга, добавляем родительскую услугу в крошки
+        if ($service->parent) {
+            $breadcrumbItems[] = [
+                'title' => $service->parent->title,
+                'url' => route('services.show.parent', $service->parent->slug)
+            ];
+        }
+
+        // Добавляем текущую услугу
+        $breadcrumbItems[] = [
+            'title' => $service->title,
+            'active' => true // Текущая страница
+        ];
+
+
+        return view('services.show', compact('service', 'childPages', 'allServices', 'breadcrumbItems'));
     }
 }

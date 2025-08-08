@@ -1,16 +1,11 @@
-@extends('layouts.app')
+{{-- resources/views/home.blade.php или аналогичный файл --}}
+@extends('layouts.app', ['breadcrumbItems' => [['title' => 'Главная', 'active' => true]]])
 
 @section('content')
-{{--    <x-breadcrumbs :items="[
-    ['title' => 'Главная', 'url' => '/', 'active' => false],
-    ['title' => 'Услуги', 'url' => '/services', 'active' => false],
-    ['title' => 'Разработка мобильных приложений', 'active' => true]
-]" />--}}
     <x-hero />
-<x-services-showcase />
+    <x-services-showcase />
     <x-about />
     <x-team />
     <x-portfolio />
-    <x-contact />
-
+    <x-pricing />
 @endsection
