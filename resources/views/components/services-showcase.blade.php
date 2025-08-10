@@ -34,7 +34,7 @@
                             </div>
                             @if($service->excerpt)
                                 <div class="text-xs text-muted-foreground mono-font">
-                                    {{ Str::limit($service->excerpt, 40) }}
+                                    {{ $service->excerpt }}
                                 </div>
                             @endif
                         </div>

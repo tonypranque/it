@@ -26,5 +26,36 @@
 
     html {
         scroll-behavior: smooth;
+        scroll-padding-top: 80px;
     }
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+}
+
+/* Предотвращаем скролл при открытом меню */
+body.overflow-hidden {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* Анимации для мобильного меню */
+.mobile-menu-container {
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-backdrop {
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-content {
+    transition: transform 0.3s ease;
 }

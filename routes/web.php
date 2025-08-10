@@ -1,14 +1,13 @@
 <?php
 
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
+use App\Services\TelegramService;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
 
 // Список услуг
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');

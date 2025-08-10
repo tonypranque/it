@@ -55,7 +55,7 @@
                         </div>
                         <div>
                             <div class="font-medium">Телефон</div>
-                            <div class="text-muted-foreground">+7 (495) 123-45-67</div>
+                            <div class="text-muted-foreground">{{ site_setting('phone') }}</div>
                             <div class="text-muted-foreground">+7 (495) 987-65-43</div>
                         </div>
                     </div>

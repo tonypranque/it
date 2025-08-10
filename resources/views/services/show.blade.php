@@ -1,12 +1,9 @@
 <!--services/show-->
 @extends('layouts.app')
-
 @section('title', $service->title . ' - ' . config('app.name'))
 @section('description', $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160))
-
 @section('meta')
     <link rel="canonical" href="{{ url()->current() }}">
-
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
@@ -14,7 +11,6 @@
     <meta property="og:description" content="{{ $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160) }}">
     <meta property="og:image" content="{{ asset('images/og-service.jpg') }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
@@ -22,15 +18,53 @@
     <meta property="twitter:description" content="{{ $service->excerpt ?? Str::limit(strip_tags($service->content ?? ''), 160) }}">
     <meta property="twitter:image" content="{{ asset('images/og-service.jpg') }}">
 @endsection
-
 @section('content')
-    <x-services-hero :service="$service">
-    </x-services-hero>
+    <!-- Секция с сеткой, начинающаяся сразу после хлебных крошек -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-nc-gray to-white">
+        <!-- Сетка (Subtle grid background) - такая же как на index -->
+        <div class="absolute inset-0 opacity-5">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="100" height="50" patternUnits="userSpaceOnUse">
+                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="var(--primary)" stroke-width="3"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
 
+        <!-- Весь контент поверх сетки -->
+        <div class="relative z-10">
+            <div class="container mx-auto px-4">
+                <div
+                    x-data="{ inView: false }"
+                    x-intersect.once="inView = true"
+                    :class="{ 'opacity-0 translate-y-8': !inView, 'opacity-100 translate-y-0': inView }"
+                    class="max-w-3xl mx-auto text-center py-16 transition-all duration-1000 ease-out"
+                >
+                <!-- Слот: хлебные крошки -->
+                @isset($breadcrumbs)
+                    <div class="mb-4 text-left">
+                        {{ $breadcrumbs }}
+                    </div>
+                @endisset
+                <!-- Код-заголовок -->
+                <div class="inline-block mb-4">
+                    <span class="code-highlight">// {{ $service->parent?->title ?? 'Service' }}</span>
+                </div>
+                <!-- Заголовок услуги -->
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    {{ $service->title }}
+                </h1>
+                <!-- Подзаголовок -->
+                <p class="text-lg text-muted-foreground leading-relaxed">
+                    {{ $service->excerpt ?? 'Профессиональные решения для вашего бизнеса.' }}
+                </p>
+            </div>
+        </div>
 
-    <section class="py-20 bg-white">
-
-        <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Основной контент (описание, панели и т.д.) -->
+        <div class="container mx-auto px-4 pb-20"> <!-- Добавил pb-20 для нижнего отступа -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Описание -->
                 <div
@@ -43,7 +77,6 @@
                     <div class="text-muted-foreground leading-relaxed prose max-w-none">
                         {!! $service->content ?? '<p>Описание услуги будет добавлено в ближайшее время.</p>' !!}
                     </div>
-
                     <ul class="space-y-3">
                         @foreach([
                             'Анализ требований и проектирование',
@@ -61,7 +94,6 @@
                         @endforeach
                     </ul>
                 </div>
-
                 <!-- Панель с деталями -->
                 <div
                     x-data="{ inView: false }"
@@ -90,7 +122,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="retro-panel p-6 text-center">
                         <h3 class="font-semibold mb-2">Готов начать проект?</h3>
                         <p class="text-sm text-muted-foreground mb-4">Получи бесплатную консультацию</p>
@@ -101,9 +132,25 @@
                 </div>
             </div>
         </div>
-        {{-- Проверяем, есть ли дочерние услуги для отображения --}}
-        @if($childPages->isNotEmpty())
-            <section class="py-16 bg-gray-50">
+        </div>
+    </section>
+
+    {{-- Проверяем, есть ли дочерние услуги для отображения --}}
+    @if($childPages->isNotEmpty())
+        <section class="relative overflow-hidden bg-gradient-to-br from-nc-gray to-white">
+            <!-- Сетка (Subtle grid background) - такая же как на index -->
+            <div class="absolute inset-0 opacity-5">
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="100" height="50" patternUnits="userSpaceOnUse">
+                            <path d="M 100 0 L 0 0 0 100" fill="none" stroke="var(--primary)" stroke-width="3"></path>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+            <!-- Контент поверх сетки -->
+            <div class="relative z-10 py-16">
                 <div class="container mx-auto px-4 max-w-6xl">
                     <div
                         x-data="{ inView: false }"
@@ -118,7 +165,6 @@
                             Подробнее о специализированных направлениях в рамках данной услуги.
                         </p>
                     </div>
-
                     <!-- Сетка дочерних услуг -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach($childPages as $index => $childService)
@@ -141,15 +187,12 @@
                                                 </svg>
                                             @endif
                                         </div>
-
                                         <!-- Заголовок -->
                                         <h3 class="text-xl font-semibold text-foreground mb-2">{{ $childService->title }}</h3>
-
                                         <!-- Краткое описание -->
                                         <p class="text-muted-foreground text-sm leading-relaxed flex-1">
                                             {{ $childService->excerpt ?? 'Описание услуги будет добавлено в ближайшее время.' }}
                                         </p>
-
                                         <!-- Стрелка при наведении -->
                                         <div class="flex items-center mt-4 text-primary text-sm font-medium">
                                             Подробнее
@@ -163,7 +206,7 @@
                         @endforeach
                     </div>
                 </div>
-            </section>
-        @endif
-    </section>
+            </div>
+        </section>
+    @endif
 @endsection

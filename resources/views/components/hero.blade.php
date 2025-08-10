@@ -1,5 +1,4 @@
-<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-to-br from-nc-gray to-white">
-    <!-- Сетка (Subtle grid background) -->
+<section class="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-nc-gray to-white -mt-30 -mb-10 overflow-visible"> <!-- Изменено с -mt-20 -mb-20 -->
     <div class="absolute inset-0 opacity-5">
         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -10,8 +9,6 @@
             <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
     </div>
-
-    <!-- Основной контент -->
     <div class="container mx-auto px-4 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Левая часть: Текст и кнопки -->
@@ -22,7 +19,6 @@
                 class="space-y-8 transition-all duration-700 ease-out"
             >
                 <div class="space-y-4">
-                    <!-- Код: function outsource() { -->
                     <div
                         x-data="{ inView: false }"
                         x-intersect.once="inView = true"
@@ -32,7 +28,6 @@
                         <span class="code-highlight">function outsource() {</span>
                     </div>
 
-                    <!-- Заголовок -->
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Качественные IT
                         <br />
@@ -41,7 +36,6 @@
                         <span class="text-muted-foreground text-3xl md:text-4xl">и техподдержка</span>
                     </h1>
 
-                    <!-- Код: return "success"; -->
                     <div
                         x-data="{ inView: false }"
                         x-intersect.once="inView = true"
@@ -52,7 +46,6 @@
                     </div>
                 </div>
 
-                <!-- Описание -->
                 <p
                     x-data="{ inView: false }"
                     x-intersect.once="inView = true"
@@ -80,7 +73,6 @@
                     </a>
                 </div>
 
-                <!-- Индикаторы доверия -->
                 <div
                     x-data="{ inView: false }"
                     x-intersect.once="inView = true"
@@ -102,7 +94,6 @@
                 </div>
             </div>
 
-            <!-- Правая часть: Панель статистики -->
             <div
                 x-data="{ inView: false }"
                 x-intersect.once="inView = true"
@@ -142,11 +133,10 @@
                     </div>
                 </div>
 
-                <!-- Декоративные элементы кода -->
                 <div class="absolute -top-4 -right-4 bg-primary text-white p-2 rounded text-xs mono-font opacity-80 pointer-events-none">
                     {{"<"}}dev{{">"}}
                 </div>
-                <div class="absolute -bottom-4 -left-4 bg-accent text-accent-foreground p-2 rounded text-xs mono-font opacity-80 pointer-events-none">
+                <div class="absolute -bottom-4 -left-4 z-10 bg-accent text-accent-foreground p-2 rounded text-xs mono-font opacity-80 pointer-events-none">
                     {"{status: 'ready'}"}
                 </div>
             </div>

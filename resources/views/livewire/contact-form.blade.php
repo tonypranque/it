@@ -37,8 +37,7 @@
                             </div>
                             <div>
                                 <div class="font-medium">Email</div>
-                                <div class="text-muted-foreground">support@itpro.com</div>
-                                <div class="text-muted-foreground">info@itpro.com</div>
+                                <div class="text-muted-foreground"><a href="mailto:{{ site_setting('email') }}">{{ site_setting('email') }}</a></div>
                             </div>
                         </div>
                         <!-- Phone -->
@@ -50,8 +49,7 @@
                             </div>
                             <div>
                                 <div class="font-medium">Телефон</div>
-                                <div class="text-muted-foreground">+7 (495) 123-45-67</div>
-                                <div class="text-muted-foreground">+7 (495) 987-65-43</div>
+                                <div class="text-muted-foreground"><a href="tel:{{ site_setting('phone') }}">{{ site_setting('phone') }}</a></div>
                             </div>
                         </div>
                         <!-- Location -->
@@ -64,8 +62,7 @@
                             </div>
                             <div>
                                 <div class="font-medium">Офисы</div>
-                                <div class="text-muted-foreground">Москва, Россия</div>
-                                <div class="text-muted-foreground">Санкт-Петербург, Россия</div>
+                                <div class="text-muted-foreground">{{ site_setting("address") }}</div>
                             </div>
                         </div>
                     </div>

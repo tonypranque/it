@@ -2,7 +2,7 @@
 @props(['items' => []])
 
 @if($items && count($items) > 0)
-    <div class="bg-nc-gray border-b border-border py-4">
+    <div class="bg-nc-gray border-b border-border py-4 mt-3">
         <div class="container mx-auto px-4">
             <nav aria-label="Breadcrumb">
                 <ol class="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
