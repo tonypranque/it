@@ -77,7 +77,7 @@
                     <div class="text-muted-foreground leading-relaxed prose max-w-none">
                         {!! $service->content ?? '<p>Описание услуги будет добавлено в ближайшее время.</p>' !!}
                     </div>
-                    <ul class="space-y-3">
+                {{--    <ul class="space-y-3">
                         @foreach([
                             'Анализ требований и проектирование',
                             'Разработка backend и frontend',
@@ -92,7 +92,7 @@
                                 <span class="text-foreground">{{ $feature }}</span>
                             </li>
                         @endforeach
-                    </ul>
+                    </ul>--}}
                 </div>
                 <!-- Панель с деталями -->
                 <div
@@ -123,10 +123,10 @@
                         </div>
                     </div>
                     <div class="retro-panel p-6 text-center">
-                        <h3 class="font-semibold mb-2">Готов начать проект?</h3>
+                        <h3 class="font-semibold mb-2">Заинтересовала услуга?</h3>
                         <p class="text-sm text-muted-foreground mb-4">Получи бесплатную консультацию</p>
-                        <a href="{{ route('page.show', 'contacts') }}" class="retro-button inline-flex px-6 py-2 text-sm">
-                            Заказать разработку
+                        <a href="#contact" class="rounded-lg retro-button inline-flex px-6 py-2 text-sm">
+                            Получить консультацию
                         </a>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                         class="text-center mb-16 transition-all duration-1000 ease-out"
                     >
                         <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                            Специализированные <span class="text-primary">услуги</span>
+                           Услуги в направлении<span class="text-primary"> {{ $service->title }}</span>
                         </h2>
                         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
                             Подробнее о специализированных направлениях в рамках данной услуги.

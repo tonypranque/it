@@ -19,10 +19,13 @@
             <div class="inline-block">
                 <span class="code-highlight">}</span>
             </div>
+            <h2 class="text-2xl md:text-3xl font-semibold text-center my-5 sm:px-5">
+                Тарифы на IT-поддержку
+            </h2>
         </div>
 
         <!-- Сетка тарифов -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-3">
             @foreach([
                 [
                     'id' => 'basic',

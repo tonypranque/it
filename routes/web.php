@@ -18,3 +18,10 @@ Route::get('/services/{parentSlug}/{childSlug}', [ServiceController::class, 'sho
 
 Route::get('/{parentSlug}/{childSlug?}', [PageController::class, 'show'])->name('page.show');
 
+Route::get('/sitemap.xml', function () {
+    $path = public_path('sitemap.xml');
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path, ['Content-Type' => 'application/xml']);
+});

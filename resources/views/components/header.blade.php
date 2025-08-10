@@ -14,6 +14,7 @@
 
             <nav class="hidden md:flex space-x-8">
                 <a href="/services" class="text-foreground hover:text-primary">Услуги</a>
+                <a href="#pricing" class="text-foreground hover:text-primary">Тарифы</a>
                 <a href="/#about" class="text-foreground hover:text-primary">О нас</a>
                 <a href="/#portfolio" class="text-foreground hover:text-primary">Клиенты</a>
                 <a href="/#contact" class="text-foreground hover:text-primary">Контакты</a>
@@ -89,10 +90,11 @@
     <div class="mobile-menu-content relative bg-white h-full w-4/5 max-w-sm ml-auto py-6 px-4 overflow-y-auto translate-x-full transition-transform duration-300">
         <div class="space-y-4">
             <a href="/services" class="block py-2 text-lg font-medium mobile-menu-link">Услуги</a>
+            <a href="/#pricing" class="block py-2 text-lg font-medium mobile-menu-link">Тарифы</a>
             <a href="/#about" class="block py-2 text-lg font-medium mobile-menu-link">О нас</a>
             <a href="/#portfolio" class="block py-2 text-lg font-medium mobile-menu-link">Клиенты</a>
             <a href="/#contact" class="block py-2 text-lg font-medium mobile-menu-link">Контакты</a>
-            <a href="/#contact" class="w-full retro-button py-3 text-center mt-4 block mobile-menu-link">Стать клиентом</a>
+            <a href="tel:{{ site_setting('phone') }}" class="w-full retro-button py-3 text-center mt-4 block mobile-menu-link">{{ site_setting('phone') }}</a>
         </div>
     </div>
 </div>

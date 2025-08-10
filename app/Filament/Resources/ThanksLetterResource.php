@@ -19,6 +19,8 @@ class ThanksLetterResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $pluralModelLabel = 'Рекомендации';
+
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form

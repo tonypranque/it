@@ -229,17 +229,17 @@
                                 <button
                                     type="submit"
                                     wire:loading.attr="disabled"
-                                    class="retro-button px-6 py-3 text-lg font-medium flex-1 text-center"
+                                    class="retro-button px-6 py-3 text-lg font-medium flex-1 text-center rounded-lg"
                                 >
                                     <span wire:loading.remove>Получить IT-поддержку</span>
                                     <span wire:loading>Отправка...</span>
                                 </button>
-                                <a
+                         {{--       <a
                                     href="#"
                                     class="inline-flex justify-center px-6 py-3 text-lg font-medium border border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-colors"
                                 >
                                     Запланировать звонок
-                                </a>
+                                </a>--}}
                             </div>
                             <!-- Политика -->
                             <div class="text-xs text-muted-foreground">
