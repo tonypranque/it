@@ -1,4 +1,4 @@
-<section class="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-nc-gray to-white -mt-30 -mb-10 overflow-visible"> <!-- Изменено с -mt-20 -mb-20 -->
+<section class="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-nc-gray to-white sm:-mt-30 -mb-10 overflow-visible"> <!-- Изменено с -mt-20 -mb-20 -->
     <div class="absolute inset-0 opacity-5">
         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
