@@ -10,6 +10,12 @@
 
     <!-- Основные мета-теги -->
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}" sizes="16x16">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
     <meta name="description" content="{{ $description ?? 'Надежная IT-поддержка и аутсорсинг в Петрозаводске. Обслуживание компьютеров, сетей, серверов и 1С с 2009 года. Карелия.' }}">
 
     <!-- Open Graph / Facebook -->
