@@ -106,15 +106,15 @@
                         <div class="space-y-4 text-sm">
                             <div class="flex justify-between">
                                 <span>Сроки выполнения</span>
-                                <span class="mono-font">от 2 недель</span>
+                                <span class="mono-font">быстро и качественно</span>
                             </div>
                             <div class="flex justify-between">
                                 <span>Гарантия качества</span>
-                                <span class="mono-font">12 месяцев</span>
+                                <span class="mono-font">на все виды работ</span>
                             </div>
                             <div class="flex justify-between">
                                 <span>Технологии</span>
-                                <span class="mono-font">Laravel, React, Vue</span>
+                                <span class="mono-font">Современный подход, облачные технологии, </span>
                             </div>
                             <div class="flex justify-between">
                                 <span>Поддержка</span>
