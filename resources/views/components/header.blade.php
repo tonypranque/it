@@ -1,4 +1,4 @@
-<!-- resources/views/components/header.blade.php -->
+<!--Header -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
     <div class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
@@ -14,14 +14,14 @@
 
             <nav class="hidden md:flex space-x-8">
                 <a href="/services" class="text-foreground hover:text-primary">Услуги</a>
-                <a href="#pricing" class="text-foreground hover:text-primary">Тарифы</a>
+                <a href="/#pricing" class="text-foreground hover:text-primary">Тарифы</a>
                 <a href="/#about" class="text-foreground hover:text-primary">О нас</a>
                 <a href="/#portfolio" class="text-foreground hover:text-primary">Клиенты</a>
                 <a href="/#contact" class="text-foreground hover:text-primary">Контакты</a>
             </nav>
 
             <div class="flex items-center space-x-4">
-                <a href="tel:{{ site_setting('phone') }}" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-lg cursor-pointer space-x-2">
+                <a href="tel:{{ preg_replace('/[^\d\+]/', '', site_setting('phone')) }}" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-lg cursor-pointer space-x-2">
                     <svg width="32" height="32" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M256 853.333V213.333h426.667c46.933 0 85.333 38.4 85.333 85.334v554.666c0 46.934-38.4 85.334-85.333 85.334H341.333c-46.933 0-85.333-38.4-85.333-85.334z" fill="#212529"/>
                         <path d="M682.667 277.333H341.333c-12.8 0-21.333 8.534-21.333 21.334v170.666c0 12.8 8.533 21.334 21.333 21.334h341.334c12.8 0 21.333-8.534 21.333-21.334v-170.666c0-12.8-8.533-21.333-21.333-21.333z" fill="#f8f9fa"/>
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        {{-- Хлебные крошки интегрированы в хедер --}}
+        {{-- Хлебные крошки --}}
         @if(isset($breadcrumbItems) && !empty($breadcrumbItems))
             <div class="border-t border-border">
                 <div class="container mx-auto px-4 py-3">
@@ -81,7 +81,7 @@
     </div>
 </header>
 
-<!-- Мобильное меню вынесено за пределы хедера -->
+<!-- Мобильное меню -->
 <div class="mobile-menu-container md:hidden fixed inset-0 z-50 hidden opacity-0">
     <!-- Подложка (backdrop) -->
     <div class="mobile-menu-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
@@ -94,7 +94,7 @@
             <a href="/#about" class="block py-2 text-lg font-medium mobile-menu-link">О нас</a>
             <a href="/#portfolio" class="block py-2 text-lg font-medium mobile-menu-link">Клиенты</a>
             <a href="/#contact" class="block py-2 text-lg font-medium mobile-menu-link">Контакты</a>
-            <a href="tel:{{ site_setting('phone') }}" class="w-full retro-button py-3 text-center mt-4 block mobile-menu-link">{{ site_setting('phone') }}</a>
+            <a href="tel:{{ preg_replace('/[^\d\+]/', '', site_setting('phone')) }}" class="w-full retro-button py-3 text-center mt-4 block mobile-menu-link">{{ site_setting('phone') }}</a>
         </div>
     </div>
 </div>

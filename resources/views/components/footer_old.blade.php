@@ -62,9 +62,9 @@
             <div>
                 <h4 class="font-semibold mb-4">Ресурсы</h4>
                 <ul class="space-y-2 text-sm text-gray-300">
-                    <li><a href="#" class="hover:text-white transition-colors duration-300">Реквизиты компании</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors duration-300">Политика конфиденциальности</a></li>
-                    <li><a href="#contact" class="hover:text-white transition-colors duration-300">Техническая поддержка</a></li>
+                    <li><a href="/requisites" class="hover:text-white transition-colors duration-300">Реквизиты компании</a></li>
+                    <li><a href="/privacy-policy" class="hover:text-white transition-colors duration-300">Политика конфиденциальности</a></li>
+                    <li><a href="/#contact" class="hover:text-white transition-colors duration-300">Техническая поддержка</a></li>
                 </ul>
             </div>
         </div>
