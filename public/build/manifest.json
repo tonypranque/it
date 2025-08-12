@@ -1,0 +1,21 @@
+{
+  "public/fonts/DotGothic16/DotGothic16-Regular.ttf": {
+    "file": "assets/DotGothic16-Regular-DNCu-K7w.ttf",
+    "src": "public/fonts/DotGothic16/DotGothic16-Regular.ttf"
+  },
+  "public/fonts/Press_Start_2P/PressStart2P-Regular.ttf": {
+    "file": "assets/PressStart2P-Regular-DogiNJoF.ttf",
+    "src": "public/fonts/Press_Start_2P/PressStart2P-Regular.ttf"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-T3mQCTBA.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CsOo0yEA.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
