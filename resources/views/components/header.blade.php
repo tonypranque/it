@@ -30,7 +30,7 @@
                     </svg>
                     <span>{{ site_setting('phone') }}</span>
                 </a>
-                <button class="hidden md:inline-flex retro-button px-4 py-2 rounded-lg cursor-pointer">Стать клиентом</button>
+                <a href="/#contact" class="hidden md:inline-flex retro-button px-4 py-2 rounded-lg cursor-pointer">Стать клиентом</a>
                 <button data-menu-toggle class="md:hidden p-2" aria-label="Toggle menu">
                     <svg class="w-6 h-6 menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
