@@ -6,7 +6,6 @@
         <div class="container mx-auto px-4">
             <nav aria-label="Breadcrumb">
                 <ol class="flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
-                    {{-- Добавляем домашнюю ссылку с иконкой --}}
                     <li>
                         <a href="{{ url('/') }}" class="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -17,7 +16,6 @@
                     </li>
 
                     @foreach($items as $index => $item)
-                        {{-- Добавляем разделитель перед каждым элементом, кроме первого --}}
                         <li class="flex items-center" aria-hidden="true">
                             <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none" />
@@ -35,38 +33,6 @@
                     @endforeach
                 </ol>
             </nav>
-
-            {{-- Структурированные данные (Schema.org), включая Home --}}
-            @php
-                // Формируем полный список для Schema.org, включая Home
-                $breadcrumbList = [
-                    [
-                        '@type' => 'ListItem',
-                        'position' => 1,
-                        'name' => 'Home',
-                        'item' => url('/'),
-                    ]
-                ];
-
-                foreach ($items as $index => $item) {
-                    $breadcrumbList[] = [
-                        '@type' => 'ListItem',
-                        'position' => $index + 2, // +1 потому что Home уже добавлен, +1 потому что индекс с 0
-                        'name' => $item['title'],
-                        'item' => $item['url'] ?? url()->current(),
-                    ];
-                }
-
-                $structuredData = [
-                    '@context' => 'https://schema.org',
-                    '@type' => 'BreadcrumbList',
-                    'itemListElement' => $breadcrumbList,
-                ];
-            @endphp
-
-            <script type="application/ld+json">
-                {!! json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
-            </script>
         </div>
     </div>
 @endif

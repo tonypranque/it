@@ -10,13 +10,13 @@
 
     <!-- Основные мета-теги -->
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="{{ $description ?? 'IT-услуги и решения для вашего бизнеса' }}">
+    <meta name="description" content="{{ $description ?? 'Надежная IT-поддержка и аутсорсинг в Петрозаводске. Обслуживание компьютеров, сетей, серверов и 1С с 2009 года. Карелия.' }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $title ?? config('app.name') }}">
-    <meta property="og:description" content="{{ $description ?? 'IT-услуги и решения для вашего бизнеса' }}">
+    <meta property="og:description" content="{{ $description ?? 'Надежная IT-поддержка и аутсорсинг в Петрозаводске. Обслуживание компьютеров, сетей, серверов и 1С с 2009 года. Карелия.' }}">
     <meta property="og:image" content="{{ $ogImage ?? asset('images/og-default.jpg') }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
 
@@ -29,6 +29,8 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="{{ url()->current() }}">
+
+    @includeWhen(isset($schema), 'seo.schema')
 
     <!-- Дополнительные мета-теги -->
     @yield('meta')
