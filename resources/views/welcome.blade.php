@@ -5,7 +5,7 @@
     <x-hero />
     <x-services-showcase />
     <x-about />
-    <x-team />
     <x-portfolio />
     <x-pricing />
+    <x-team />
 @endsection
