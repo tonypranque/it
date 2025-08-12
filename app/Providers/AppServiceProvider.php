@@ -4,7 +4,13 @@ namespace App\Providers;
 
 use App\Models\ContactSubmission;
 use App\Observers\ContactSubmissionObserver;
+use Backstage\TwoFactorAuth\Listeners\SendTwoFactorCodeListener;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Events\TwoFactorAuthenticationChallenged;
+use Laravel\Fortify\Events\TwoFactorAuthenticationEnabled;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
        ContactSubmission::observe(ContactSubmissionObserver::class);
+        Event::listen([
+            TwoFactorAuthenticationChallenged::class,
+            TwoFactorAuthenticationEnabled::class
+        ], SendTwoFactorCodeListener::class);
     }
 }

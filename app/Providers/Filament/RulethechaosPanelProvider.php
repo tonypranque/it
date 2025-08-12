@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Backstage\TwoFactorAuth\TwoFactorAuthPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -55,6 +56,7 @@ class RulethechaosPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->plugin(TwoFactorAuthPlugin::make())
             ->renderHook(PanelsRenderHook::USER_MENU_BEFORE, function () {
                 return view('filament.navigation.home-button');
             });

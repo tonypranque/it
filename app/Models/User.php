@@ -3,25 +3,32 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Backstage\TwoFactorAuth\Enums\TwoFactorType;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
-    protected $fillable = [
+/*    protected $fillable = [
         'name',
         'email',
         'password',
-    ];
+        'two_factor_type'
+    ];*/
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,6 +50,11 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_type' => TwoFactorType::class,
         ];
+    }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }
