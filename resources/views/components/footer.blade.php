@@ -6,13 +6,10 @@
             <div class="space-y-4">
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        {{--<span class="mono-font text-white text-sm font-semibold">
-                            <svg width="32px" height="32px" viewBox="0 -0.5 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" transform="matrix(-1, 0, 0, 1, 0, 0)" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Карьяла тэк- KarjalaTech</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.00021000000000000004" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-99.000000, -680.000000)" fill="#ffffff"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M50.21875,525 L52.31875,525 L52.31875,523 L50.21875,523 L50.21875,525 Z M61.9,538 L59.8,538 L59.8,532 L58.88125,532 L57.7,532 L49.3,532 L47.5276,532 L47.2,532 L47.2,538 L45.1,538 L45.1,526.837 L47.2,524.837 L47.2,528 L48.11875,528 L49.3,528 L57.7,528 L59.47135,528 L59.8,528 L59.8,522 L61.9,522 L61.9,538 Z M49.3,538 L57.7,538 L57.7,534 L49.3,534 L49.3,538 Z M49.3,522.837 L50.17885,522 L57.7,522 L57.7,526 L49.3,526 L49.3,522.837 Z M63.9664,520 L61.8664,520 L49.3,520 L49.3,520.008 L47.2084,522 L47.2,522 L47.2,522.008 L43.0084,526 L43,526 L43,538 L43,540 L45.1,540 L61.8664,540 L63.9664,540 L64,540 L64,538 L64,522 L64,520 L63.9664,520 Z" id="save_item-[#ffffff]"> </path> </g> </g> </g> </g></svg>
-                        </span>--}}
                         <img src="/images/logo.jpg" alt="Logo" class="w-12 h-12">
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold">{{ config('app.name') }}</h1>
+                        <h2 class="text-xl font-bold">{{ config('app.name') }}</h2>
                         <p class="text-xs text-gray-400 mono-font">IT-поддержка</p>
                     </div>
                 </div>

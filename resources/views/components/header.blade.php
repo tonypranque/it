@@ -7,7 +7,7 @@
                     <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="w-12 h-12 object-cover">
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold text-black">{{ config('app.name') }}</h1>
+                    <h2 class="text-xl font-bold text-black">{{ config('app.name') }}</h2>
                     <p class="text-xs text-muted-foreground mono-font">ИТ решения</p>
                 </div>
             </a>
