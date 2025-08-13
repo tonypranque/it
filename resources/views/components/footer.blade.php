@@ -5,8 +5,8 @@
             <!-- Логотип и соцсети -->
             <div class="space-y-4">
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <img src="/images/logo.jpg" alt="Logo" class="w-12 h-12">
+                    <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center">
+                        <img src="/images/logo.png" alt="Logo" class="w-12 h-12">
                     </div>
                     <div>
                         <h2 class="text-xl font-bold">{{ config('app.name') }}</h2>

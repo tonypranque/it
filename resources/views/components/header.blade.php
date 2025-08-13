@@ -4,7 +4,7 @@
         <div class="flex items-center justify-between">
             <a href="/" class="flex items-center space-x-3">
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="w-12 h-12 object-cover">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-cover">
                 </div>
                 <div>
                     <h2 class="text-xl font-bold text-black">{{ config('app.name') }}</h2>
