@@ -88,8 +88,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
-                            <div class="text-2xl font-bold text-foreground mono-font">50+</div>
-                            <div class="text-sm text-muted-foreground">Специалистов</div>
+                            <div class="text-2xl font-bold text-foreground mono-font">15+ лет</div>
+                            <div class="text-sm text-muted-foreground">Опытные специалисты</div>
                         </div>
                         <!-- Клиенты -->
                         <div class="text-center">
@@ -110,7 +110,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-nc-cyan mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <div class="text-2xl font-bold text-foreground mono-font">2 часа</div>
+                            <div class="text-2xl font-bold text-foreground mono-font">15 минут</div>
                             <div class="text-sm text-muted-foreground">Среднее время ответа</div>
                         </div>
                     </div>
