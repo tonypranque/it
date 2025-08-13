@@ -102,7 +102,7 @@
             <strong>Хочешь стать частью нашей команды?</strong> Мы ищем специалистов, готовых обеспечивать надежную IT-поддержку и расти вместе с нами.
         </p>
         <a
-            href="#vacancies"
+            href="/vacancy"
             class="retro-button inline-flex px-8 py-3 text-lg font-medium rounded-xl"
         >
             Смотреть вакансии
