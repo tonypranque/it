@@ -52,8 +52,8 @@
                 <ul class="space-y-2 text-sm text-gray-300">
                     <li><a href="#about" class="hover:text-white transition-colors duration-300">О нас</a></li>
                     <li><a href="#" class="hover:text-white transition-colors duration-300">Наша команда</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors duration-300">Вакансии</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors duration-300">Отзывы клиентов</a></li>
+                    <li><a href="/vacancy" class="hover:text-white transition-colors duration-300">Вакансии</a></li>
+                    <li><a href="/#portfolio" class="hover:text-white transition-colors duration-300">Отзывы клиентов</a></li>
                     <li><a href="#contact" class="hover:text-white transition-colors duration-300">Связаться с нами</a></li>
                 </ul>
             </div>

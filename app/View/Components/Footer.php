@@ -21,15 +21,15 @@ class Footer extends Component
         // Статичные ссылки
         $this->companyLinks = [
             ['name' => 'О нас', 'url' => '#about'],
-            ['name' => 'Наша команда', 'url' => '#'],
-            ['name' => 'Вакансии', 'url' => '#'],
-            ['name' => 'Отзывы клиентов', 'url' => '#'],
+            ['name' => 'Наша команда', 'url' => '/#team'],
+            ['name' => 'Вакансии', 'url' => '/vacancy'],
+            ['name' => 'Отзывы клиентов', 'url' => '/#portfolio'],
             ['name' => 'Связаться с нами', 'url' => '#contact'],
         ];
 
         $this->resources = [
-            ['name' => 'Реквизиты компании', 'url' => '#'],
-            ['name' => 'Политика конфиденциальности', 'url' => '#'],
+            ['name' => 'Реквизиты компании', 'url' => '/requisites'],
+            ['name' => 'Политика конфиденциальности', 'url' => '/privacy-policy'],
             ['name' => 'Техническая поддержка', 'url' => '#contact'],
         ];
     }
