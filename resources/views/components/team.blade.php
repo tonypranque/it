@@ -25,7 +25,7 @@
         @endphp
 
             <!-- Сетка карточек -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 max-w-6xl mx-auto">
             @foreach($teamMembers as $index => $member)
                 <div
                     x-data="{ inView: false }"
