@@ -1,2 +1,20 @@
 User-agent: *
-Disallow:
+Disallow: /
+Allow: /services$
+Allow: /services/it-autsorsing-i-podderzka$
+Allow: /services/setevye-reseniia$
+Allow: /services/servernoe-administrirovanie$
+Allow: /services/it-bezopasnost-i-vosstanovlenie$
+Allow: /services/1s-podderzka-i-vnedrenie$
+Allow: /services/it-autsorsing-i-podderzka/abonentskoe-obsluzivanie$
+Allow: /services/it-autsorsing-i-podderzka/vyezd-specialista$
+Allow: /services/it-autsorsing-i-podderzka/distancionnaia-podderzka$
+Allow: /services/setevye-reseniia/proektirovanie-setei$
+Allow: /services/setevye-reseniia/nastroika-wi-fi$
+Allow: /privacy-policy$
+
+Disallow: /livewire/
+Disallow: /storage/
+
+Sitemap: http://localhost:8000/sitemap.xml
+Host: localhost

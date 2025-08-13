@@ -7,6 +7,7 @@ use App\Models\Service;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Facades\File; // Добавили для работы с файлами
 
 class GenerateSitemap extends Command
 {
@@ -74,5 +75,64 @@ class GenerateSitemap extends Command
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
         $this->info('✅ Sitemap успешно сгенерирован: ' . public_path('sitemap.xml'));
+
+        // === Добавляем генерацию robots.txt ===
+        $this->info('Генерация robots.txt...');
+
+        $robotsContent = $this->generateRobotsTxtContent();
+        File::put(public_path('robots.txt'), $robotsContent);
+
+        $this->info('✅ Robots.txt успешно сгенерирован: ' . public_path('robots.txt'));
+        // === Конец генерации robots.txt ===
+    }
+
+    /**
+     * Генерирует содержимое файла robots.txt
+     */
+    private function generateRobotsTxtContent(): string
+    {
+        // Получаем URL-адреса из sitemap.xml
+        $sitemapPath = public_path('sitemap.xml');
+        $allowedUrls = [];
+
+        if (file_exists($sitemapPath)) {
+            $sitemapXml = simplexml_load_file($sitemapPath);
+            // Пространства имён
+            $namespaces = $sitemapXml->getNamespaces(true);
+            $namespace = isset($namespaces['']) ? $namespaces[''] : 'http://www.sitemaps.org/schemas/sitemap/0.9';
+
+            foreach ($sitemapXml->children($namespace)->url as $url) {
+                $loc = (string) $url->loc;
+                // Преобразуем полный URL в путь
+                $path = parse_url($loc, PHP_URL_PATH);
+                if ($path) {
+                    // Добавляем символ $ в конце для точного совпадения пути
+                    $allowedUrls[] = $path . '$';
+                }
+            }
+        }
+
+        // Формируем содержимое robots.txt
+        $lines = [
+            'User-agent: *',
+            'Disallow: /', // Запрещаем всё по умолчанию
+        ];
+
+        // Добавляем разрешённые URL
+        foreach (array_unique($allowedUrls) as $url) {
+            $lines[] = "Allow: $url";
+        }
+
+        // Исключаем служебные пути Laravel, которые физически в public
+        $lines[] = '';
+        $lines[] = 'Disallow: /livewire/';
+        $lines[] = 'Disallow: /storage/';
+        // Не добавляем rulethechaos и другие админские пути, чтобы не раскрывать их
+
+        $lines[] = '';
+        $lines[] = 'Sitemap: ' . url('sitemap.xml');
+        $lines[] = 'Host: ' . parse_url(url('/'), PHP_URL_HOST);
+
+        return implode("\n", $lines);
     }
 }
