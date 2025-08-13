@@ -43,6 +43,7 @@
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('seo.yandex-metrika')
 </head>
 <body>
 <div class="min-h-screen bg-background">

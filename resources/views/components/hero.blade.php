@@ -30,9 +30,9 @@
 
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Качественные IT
-                        <br />
+                        <br>
                         <span class="text-primary">Услуги</span>
-                        <br />
+                        <br>
                         <span class="text-muted-foreground text-3xl md:text-4xl">и техподдержка</span>
                     </h1>
 
