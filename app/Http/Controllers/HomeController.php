@@ -55,9 +55,8 @@ class HomeController extends Controller
             ],
             'priceRange' => '₽₽',
             'sameAs' => [
-                'https://vk.com/karjala_tech',
-                'https://t.me/karjala_tech',
-                'https://yandex.ru/maps/org/karjalatech/1234567890',
+                'https://vk.com/club231899556',
+                'https://t.me/Tech3support',
             ],
         ];
 
@@ -69,11 +68,6 @@ class HomeController extends Controller
                 'url' => $data['url'],
                 'description' => $data['description'],
                 'publisher' => $baseBusiness,
-                'potentialAction' => [
-                    '@type' => 'SearchAction',
-                    'target' => $data['url'] . '?q={search_term}',
-                    'query-input' => 'required name=search_term',
-                ],
             ],
             'service' => [
                 '@context' => 'https://schema.org',
