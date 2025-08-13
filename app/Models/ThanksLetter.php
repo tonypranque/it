@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\ClearsCacheOnSave;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class ThanksLetter extends Model
 {
+    use ClearsCacheOnSave;
+
     protected $fillable = ['title', 'image'];
 
     // Аксессоры

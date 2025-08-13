@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ClearsCacheOnSave;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class TeamMember extends Model
 {
-    use HasFactory;
+    use HasFactory, ClearsCacheOnSave;
 
     protected $fillable = [
         'name',
@@ -39,27 +40,5 @@ class TeamMember extends Model
         return asset('img/team/default.jpg');
     }
 
-    // 🔁 Сброс кеша при изменении модели
-    protected static function booted()
-    {
-        static::saved(function ($model) {
-            static::clearLaravelCache();
-        });
 
-        static::deleted(function ($model) {
-            static::clearLaravelCache();
-        });
-    }
-
-    // 🧹 Метод для очистки кеша
-    public static function clearLaravelCache()
-    {
-        // Выполняем асинхронно через queue, чтобы не тормозить запрос
-        dispatch(function () {
-            Artisan::call('cache:clear');
-            Artisan::call('config:clear');
-            Artisan::call('route:clear');
-            Artisan::call('view:clear');
-        })->afterResponse(); // Выполняется после ответа пользователю
-    }
 }
