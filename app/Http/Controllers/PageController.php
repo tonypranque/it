@@ -78,8 +78,8 @@ class PageController extends Controller
             ],
             'geo' => [
                 '@type' => 'GeoCoordinates',
-                'latitude' => '61.7850',
-                'longitude' => '34.3422',
+                'latitude' => '61.7919',
+                'longitude' => '34.3627',
             ],
             'areaServed' => [
                 '@type' => 'City',
