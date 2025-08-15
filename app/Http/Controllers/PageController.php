@@ -101,7 +101,7 @@ class PageController extends Controller
             '@context' => 'https://schema.org',
             '@type' => $schemaType,
             'name' => $page->title,
-            'description' => strip_tags($page->excerpt ?? substr($page->content, 0, 160)),
+            'description' => config('app.name').' - '.$page->title,
             'url' => url()->current(),
             'breadcrumb' => $this->generateBreadcrumbSchema($breadcrumbItems),
         ];
