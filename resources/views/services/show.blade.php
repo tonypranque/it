@@ -63,8 +63,8 @@
             </div>
         </div>
 
-        <!-- Основной контент (описание, панели и т.д.) -->
-        <div class="container mx-auto px-4 pb-20"> <!-- Добавил pb-20 для нижнего отступа -->
+
+        <div class="container mx-auto px-4 pb-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <!-- Описание -->
                 <div
@@ -77,22 +77,7 @@
                     <div class="text-muted-foreground leading-relaxed prose max-w-none">
                         {!! $service->content ?? '<p>Описание услуги будет добавлено в ближайшее время.</p>' !!}
                     </div>
-                {{--    <ul class="space-y-3">
-                        @foreach([
-                            'Анализ требований и проектирование',
-                            'Разработка backend и frontend',
-                            'Интеграция с внешними API',
-                            'Тестирование и QA',
-                            'Деплой и техническая поддержка'
-                        ] as $feature)
-                            <li class="flex items-start space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-nc-success flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                <span class="text-foreground">{{ $feature }}</span>
-                            </li>
-                        @endforeach
-                    </ul>--}}
+
                 </div>
                 <!-- Панель с деталями -->
                 <div
@@ -135,10 +120,10 @@
         </div>
     </section>
 
-    {{-- Проверяем, есть ли дочерние услуги для отображения --}}
+
     @if($childPages->isNotEmpty())
         <section class="relative overflow-hidden bg-gradient-to-br from-nc-gray to-white">
-            <!-- Сетка (Subtle grid background) - такая же как на index -->
+
             <div class="absolute inset-0 opacity-5">
                 <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -149,7 +134,7 @@
                     <rect width="100%" height="100%" fill="url(#grid)" />
                 </svg>
             </div>
-            <!-- Контент поверх сетки -->
+
             <div class="relative z-10 py-16">
                 <div class="container mx-auto px-4 max-w-6xl">
                     <div
@@ -165,7 +150,7 @@
                             Подробнее о специализированных направлениях в рамках данной услуги.
                         </p>
                     </div>
-                    <!-- Сетка дочерних услуг -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach($childPages as $index => $childService)
                             <div class="flex">
@@ -193,7 +178,7 @@
                                         <p class="text-muted-foreground text-sm leading-relaxed flex-1">
                                             {{ $childService->excerpt ?? 'Описание услуги будет добавлено в ближайшее время.' }}
                                         </p>
-                                        <!-- Стрелка при наведении -->
+
                                         <div class="flex items-center mt-4 text-primary text-sm font-medium">
                                             Подробнее
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
