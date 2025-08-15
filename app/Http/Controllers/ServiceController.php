@@ -130,7 +130,7 @@ class ServiceController extends Controller
             '@type' => 'LocalBusiness',
             'name' => 'KarjalaTech',
             'url' => 'https://karjalatech.ru',
-            'telephone' => '+7-921-755-12-34',
+            'telephone' => preg_replace('/[^\d\+]/', '', site_setting('phone')),
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'ул. Красная, д. 6',

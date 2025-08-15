@@ -67,7 +67,7 @@ class PageController extends Controller
             '@type' => 'LocalBusiness',
             'name' => 'KarjalaTech',
             'url' => 'https://karjalatech.ru',
-            'telephone' => '+7-921-755-12-34',
+            'telephone' => preg_replace('/[^\d\+]/', '', site_setting('phone')),
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'ул. Красная, д. 6',
@@ -106,67 +106,6 @@ class PageController extends Controller
             'breadcrumb' => $this->generateBreadcrumbSchema($breadcrumbItems),
         ];
 
-        // Добавляем provider для About, Contact и т.п.
-        if (in_array($page->slug, ['about', 'o-kompanii', 'contacts', 'kontakty'])) {
-            $schemaData['provider'] = $baseBusiness;
-        }
-
-        // Для страницы "О компании" — дополнительные данные
-        if ($page->slug === 'about' || $page->slug === 'o-kompanii') {
-            $schemaData['foundingDate'] = '2009';
-            $schemaData['numberOfEmployees'] = 10;
-            $schemaData['description'] = 'IT-аутсорсинг и техподдержка для бизнеса в Карелии с 2009 года.';
-        }
-
-        // Для контактов — контактная точка
-        if ($page->slug === 'contacts' || $page->slug === 'kontakty') {
-            $schemaData['mainEntity'] = [
-                '@type' => 'ContactPoint',
-                'contactType' => 'Консультация по IT-обслуживанию',
-                'telephone' => '+7-921-755-12-34',
-                'availableLanguage' => 'Русский',
-                'areaServed' => 'RU',
-                'email' => 'info@karjalatech.ru',
-            ];
-        }
-
-        // Для тарифов — можно добавить OfferCatalog
-        if ($page->slug === 'tariffs' || $page->slug === 'tseny') {
-            $schemaData['hasOfferCatalog'] = [
-                '@type' => 'OfferCatalog',
-                'name' => 'Тарифы на IT-поддержку',
-                'itemListElement' => [
-                    [
-                        '@type' => 'OfferCatalog',
-                        'name' => 'Базовый',
-                        'itemListElement' => [
-                            [
-                                '@type' => 'Offer',
-                                'itemOffered' => [
-                                    '@type' => 'Service',
-                                    'name' => 'Базовая IT-поддержка',
-                                    'description' => 'Техподдержка до 5 рабочих мест',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        '@type' => 'OfferCatalog',
-                        'name' => 'Стандарт',
-                        'itemListElement' => [
-                            [
-                                '@type' => 'Offer',
-                                'itemOffered' => [
-                                    '@type' => 'Service',
-                                    'name' => 'Расширенная IT-поддержка',
-                                    'description' => 'Поддержка до 15 рабочих мест и 1 сервер',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ];
-        }
 
         return json_encode($schemaData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     }
