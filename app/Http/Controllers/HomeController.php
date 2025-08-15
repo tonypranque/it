@@ -31,7 +31,7 @@ class HomeController extends Controller
             '@type' => 'LocalBusiness',
             'name' => 'KarjalaTech',
             'url' => 'https://karjalatech.ru',
-            'telephone' => site_setting('phone', '+7 (8142) 28-87-45'),
+            'telephone' => preg_replace('/[^\d\+]/', '', site_setting('phone')),
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'ул. Красная, д. 6',
@@ -42,8 +42,8 @@ class HomeController extends Controller
             ],
             'geo' => [
                 '@type' => 'GeoCoordinates',
-                'latitude' => '61.7850',
-                'longitude' => '34.3422',
+                'latitude' => '61.7919',
+                'longitude' => '34.3627',
             ],
             'openingHoursSpecification' => [
                 [
